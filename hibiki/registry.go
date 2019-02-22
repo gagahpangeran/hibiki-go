@@ -11,9 +11,6 @@ type Registry struct {
 	commands map[string]*Command
 }
 
-// DefaultRegistry is the global default command registry
-var DefaultRegistry = NewRegistry()
-
 // NewRegistry creates a new CommandRegistry
 func NewRegistry() *Registry {
 	return &Registry{

@@ -6,8 +6,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// DefaultRegistry is the global default command registry
+var DefaultRegistry = hibiki.NewRegistry()
+
 func init() {
-	hibiki.DefaultRegistry.AddCommand(createCallCommand())
+	DefaultRegistry.AddCommand(createCallCommand())
 	logrus.Println("Registered 'call' command to default registry.")
 }
 

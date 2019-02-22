@@ -13,7 +13,7 @@ func handleCommand(client *linebot.Client, event *linebot.Event, message *linebo
 		return
 	}
 
-	_, route, rest := DefaultRegistry.MatchPrefix(message.Text)
+	_, route, rest := globalRegistry.MatchPrefix(message.Text)
 
 	if route == nil {
 		commandSplitted := strings.SplitN(message.Text, " ", 2)

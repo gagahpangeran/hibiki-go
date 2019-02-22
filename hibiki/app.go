@@ -9,13 +9,15 @@ import (
 	"github.com/spf13/viper"
 )
 
+var globalRegistry *Registry
+
 func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Hibiki running")
 	})
 }
 
-func StartApp() {
+func StartApp(registry *Registry) {
 	handler, err := httphandler.New(
 		viper.GetString("line.channel_secret"),
 		viper.GetString("line.channel_access_token"),
@@ -24,6 +26,8 @@ func StartApp() {
 		logrus.Fatal("Failed initializing line handler")
 	}
 	logrus.Println("Initialized line handler")
+
+	globalRegistry = registry
 
 	handler.HandleEvents(handleEvents(handler))
 
