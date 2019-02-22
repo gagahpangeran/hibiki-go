@@ -1,0 +1,8 @@
+hostname: localhost
+port: 8080
+
+line:
+  channel_secret: secret
+  channel_access_token: token
+
+secret: secret
